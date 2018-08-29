@@ -132,7 +132,16 @@ class net:
                 text.append("SSID:     " + access_point['ssid'])
                 text.append("BSSID:    " + access_point['bssid'])
                 text.append("Signal:   " + str(access_point['quality']))
-                text.append("Security: " + access_point['security'])
+                # the access point library returns diffrent data types for
+                # security. so we must check the type and fix it
+                if type(access_point['security']) is list:
+                    security = " ".join(str(e) for e in access_point['security'])
+                else:
+                    security = str(access_point['security'])
+                if security.replace(" ", "") == "":
+                    security = "-"
+                
+                text.append("Security: " + security)
                 text.append(" ")
         else:
             # when the scan is incomplete return None
