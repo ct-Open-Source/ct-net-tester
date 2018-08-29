@@ -125,10 +125,17 @@ class gui:
         )
 
         # We want three buttons in a row and two rows of buttons, evenly spaced
-        self.menu_button_size = int(math.floor((self.textbox_size[0] / 3) * 0.9))
-        self.menu_button_padding = int((self.textbox_size[0] - (3 * self.menu_button_size)) / 4)
-        self.menu_icon_size = int(self.menu_button_size * 0.9)
+        menu_button_size_x = int(math.floor((self.textbox_size[0] / 3) * 0.9))
+        menu_button_size_y = int(math.floor((self.textbox_size[1] / 2) * 0.9))
+        # pick the smaller size, so we don't oversize the buttons
+        self.menu_button_size = min(menu_button_size_x, menu_button_size_y)
 
+        # We want three buttons in a row and two rows of buttons, evenly spaced
+        menu_button_padding_x = int((self.textbox_size[0] - (3 * self.menu_button_size)) / 4)
+        menu_button_padding_y = int((self.textbox_size[1] - (2 * self.menu_button_size)) / 3)
+        # pick the smaller size, so we don't oversize the buttons
+        self.menu_button_padding = min(menu_button_padding_y, menu_button_padding_y)
+        self.menu_icon_size = int(self.menu_button_size * 0.9)
         # icons should look good, so don't oversize them 
         if self.menu_icon_size > self.max_menu_icon_size:
             self.menu_icon_size = self.max_menu_icon_size
