@@ -11,7 +11,7 @@ class gui:
     def __init__(self, display_resolution, fg_color, bg_color,
                  scale_correction, cursor_visible):
         # a fullscreen switch for debugging purposes
-        self.fullscreen = True
+        self.fullscreen = False
         # the display resolution as a tuple
         self.display_size = (int(display_resolution.split(',')[0]), int(display_resolution.split(',')[0]))
         # colors for foreground and background
@@ -75,6 +75,9 @@ class gui:
         # get definitive size of the surface independend from what was
         # requested.
         self.display_size = self.display_surface.get_size()
+
+        # hide the mouse cursor if requested
+        pygame.mouse.set_visible(self.cursor_visible)
     
     # return all pygame events
     def get_events(self):
