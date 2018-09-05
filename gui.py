@@ -11,7 +11,7 @@ class gui:
     def __init__(self, display_resolution, fg_color, bg_color,
                  scale_correction, cursor_visible):
         # a fullscreen switch for debugging purposes
-        self.fullscreen = False
+        self.fullscreen = True
         # the display resolution as a tuple
         self.display_size = (int(display_resolution.split(',')[0]), int(display_resolution.split(',')[0]))
         # colors for foreground and background
