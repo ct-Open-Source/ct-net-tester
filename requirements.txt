@@ -1,5 +1,5 @@
 access-points==0.4.60
 get-mac==0.2.3
 netifaces==0.10.7
-pygame==1.9.4
+pygame>=1.9.3
 PyRIC==0.1.6.3
